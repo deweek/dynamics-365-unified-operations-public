@@ -2,7 +2,7 @@
 # required metadata
 
 title: Impair right-of-use assets
-description: This topic describes the functionality that records an impairment and adjusts the asset depreciation schedule of an Accounting Standards Codification Topic 842 (ASC 842) operating lease.
+description: This article describes the functionality that records an impairment and adjusts the asset depreciation schedule of an Accounting Standards Codification Topic 842 (ASC 842) operating lease.
 author: moaamer
 ms.date: 12/03/2021
 ms.topic: article
@@ -15,7 +15,7 @@ ms.search.form:
 # ROBOTS: 
 audience: Application User
 # ms.devlang: 
-ms.reviewer: roschlom
+ms.reviewer: kfend
 
 # ms.tgt_pltfrm: 
 ms.custom: 4464
@@ -32,7 +32,7 @@ ms.dyn365.ops.version: 10.0.14
 [!include [banner](../includes/banner.md)]
 [!include [preview banner](../includes/preview-banner.md)]
 
-If a right-of-use (ROU) asset's carrying amount isn't recoverable, you might have to test whether the asset is impaired. If you determine that the asset is impaired, Asset leasing can record the impairment and adjust the depreciation schedule accordingly. This topic describes the functionality that records the impairment and adjusts the depreciation schedule of an Accounting Standards Codification Topic 842 (ASC 842) operating lease. The same method also applies to International Financial Reporting Standard 16 (IFRS 16) leases.
+If a right-of-use (ROU) asset's carrying amount isn't recoverable, you might have to test whether the asset is impaired. If you determine that the asset is impaired, Asset leasing can record the impairment and adjust the depreciation schedule accordingly. This article describes the functionality that records the impairment and adjusts the depreciation schedule of an Accounting Standards Codification Topic 842 (ASC 842) operating lease. The same method also applies to International Financial Reporting Standard 16 (IFRS 16) leases.
 
 The remaining balance of the ROU asset will be amortized on a straight-line basis for the number of periods that remain, regardless of whether the lease was classified as a finance lease under IFRS 16 or an operating lease under ASC 842.
 
@@ -49,6 +49,8 @@ The remaining balance of the ROU asset will be amortized on a straight-line basi
 
     > [!NOTE]
     > After the impairment transaction is posted, a new book version is created.
+
+    > If the lease is classified as an operating lease, the monthly depreciation after impairment will be calculated using straight-line depreciation.
 
 9. To view the impaired asset depreciation schedule, open the asset depreciation schedule for the lease book. The asset will now be depreciated on a straight-line basis over the number of months that you entered in the **Periods remaining** field.
 10. To view the impairment expense journal entry, select **Asset leasing journal** on the Action Pane of the impaired lease book. The system creates a journal entry that debits the impairment expense posting account and credits the lease asset posting account. 
@@ -86,7 +88,7 @@ The following tables show the values that are set on the **General** and **Payme
 
 ### Steps
 
-1. After you create the lease as described earlier in this topic, go to the lease book, and confirm the payment schedule. Then post the initial recognition journal entry. The initial ROU asset and lease liability should be $70,235.81. For this example, the lease was classified as an operating lease under ASC 842.
+1. After you create the lease as described earlier in this article, go to the lease book, and confirm the payment schedule. Then post the initial recognition journal entry. The initial ROU asset and lease liability should be $70,235.81. For this example, the lease was classified as an operating lease under ASC 842.
 2. Run the batch journal process three times to simulate the passage of three years for the lease payments, interest expenses, and depreciation expenses.
 3. After you've finished running all three batch jobs, go back to the lease book, and open the liability and asset transactions tables to view the current carrying value of the ROU asset and lease liability. After three years, the value of the liability should be approximately $-53,893.00, and the value of the asset should be approximately $53,893.00. 
 
@@ -105,6 +107,7 @@ The following tables show the values that are set on the **General** and **Payme
     | Close book             | No       |
 
 6. An impairment expense journal entry has been created and posted. To view it, go to the asset's leasing journal in the lease book. Notice that the amount of the impairment was debited to the Impairment expense posting account, and the ROU asset posting account was credited.
+
 7. To view the net effect of the impairment, go to the liability and asset transactions tables. Notice that the impairment expense has decreased the ROU asset, but the carrying amount of the lease liability hasn't changed.
 
 The impairment has one other effect that you should consider. Because the ROU asset amount is now much less than the lease liability, the amount must be depreciated differently than it was before. Specifically, the asset is now depreciated in a straight-line manner throughout the remaining 84 months of the lease, beginning on the transaction date.

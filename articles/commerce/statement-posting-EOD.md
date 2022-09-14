@@ -2,38 +2,26 @@
 # required metadata
 
 title: Improvements to statement posting functionality
-description: This topic describes improvements that have been made to the statement posting feature.
+description: This article describes improvements that have been made to the statement posting feature.
 author: analpert
-ms.date: 12/03/2021
+ms.date: 05/18/2022
 ms.topic: article
-ms.prod: 
-ms.technology: 
-
-# optional metadata
-
-# ms.search.form:  [Operations AOT form name to tie this topic to]
-audience: Application User
-# ms.devlang: 
+audience: Application User, Developer, IT Pro
 ms.reviewer: josaw
-# ms.tgt_pltfrm: 
-# ms.custom: [used by loc for topics migrated from the wiki]
 ms.search.region: Global 
-ms.search.industry: retail
 ms.author: analpert
 ms.search.validFrom: 2018-04-30
-ms.dyn365.ops.version: AX 7.0.0, Retail July 2017 update
 ---
 
 # Improvements to statement posting functionality
 
 [!include [banner](includes/banner.md)]
-[!include [banner](../includes/preview-banner.md)]
 
-This topic describes the first set of improvements that have been made to the statement posting feature. These improvements are available in Microsoft Dynamics 365 for Finance and Operations 7.3.2.
+This article describes the first set of improvements that have been made to the statement posting feature. These improvements are available in Microsoft Dynamics 365 Finance 7.3.2.
 
 ## Activation
 
-By default, during deployment of Finance and Operations 7.3.2, the program is set up to use the legacy feature for statement postings. To enable the improved statement posting feature, you must turn on the configuration key for it.
+By default, during deployment of finance and operations 7.3.2, the program is set up to use the legacy feature for statement postings. To enable the improved statement posting feature, you must turn on the configuration key for it.
 
 - Go to **System administration** \> **Setup** \> **License configuration**, and then, under the **Retail and Commerce** node, clear the **Statements (legacy)** check box, and select the **Statements** check box.
 
@@ -58,15 +46,8 @@ As part of the improvements to the statement posting feature, three new paramete
 
 - **Disable counting required** – When this option is set to **Yes**, the posting process for a statement continues, even if the difference between the counted amount and the transaction amount on the statement is outside the threshold that is defined on the **Statement** FastTab for stores.
 
-Additionally, the following parameters have been introduced on the **Batch processing** FastTab on the **Posting** tab of the **Commerce parameters** page: 
-
-- **Maximum number of parallel statement posting** – This field defines the number of batch tasks that will be used to post multiple statements. 
-- **Max thread for order processing per statement** – This field represents the maximum number of threads used by the statement posting batch job to create and invoice sales orders for a single statement. The total number of threads that will be used by the statement posting process will be computed based on the value in this parameter multiplied by the value in the **Maximum number of parallel statement posting** parameter. Setting the value of this parameter too high can negatively impact the performance of the statement posting process.
-- **Max transaction lines included in aggregation** – This field defines the number of transaction lines that will be included in a single aggregated transaction before a new one is created. Aggregated transactions are created based on different aggregation criteria such as customer, business date, or financial dimensions. It is important to note that the lines from a single transaction will not be split across different aggregated transactions. This means that there is a possibility that the number of lines in an aggregated transaction is slightly higher or lower based on factors such as number of distinct products.
-- **Maximum number of threads to validate store transactions** – This field defines the number of threads that will be used to validate transactions. Validating transactions is a required step that needs to occur before the transactions can be pulled into the statements. You also need to define a **Gift card product** on the **Gift card** FastTab on the **Posting** tab of the **Commerce parameters** page. This needs to defined even if gift cards are not used by the organization.
-
 > [!NOTE]
-> All settings and parameters that are related to statement postings, and that are defined on stores and on the **Commerce parameters** page, are applicable to the improved statement posting feature.
+> As of the Commerce version 10.0.14 release, when the **Retail statements - Trickle feed** feature is enabled, the **Post inventory** batch job is no longer applicable and can't be run.
 
 ## Processing
 
@@ -166,7 +147,10 @@ The aggregated transactions view provides the following benefits:
 - The user has visibility into the aggregated transactions that failed during sales order creation and the sales orders that failed during invoicing.
 - The user has visibility into how transactions are aggregated.
 - The user has a complete audit trail, from transactions, to sales orders, to sales invoices. This audit trail wasn't available in the legacy statement posting feature.
-- Aggregated XML file make it easier to identify issues during sales order creation and invoicing.
+- Aggregated XML file makes it easier to identify issues during sales order creation and invoicing.
+
+> [!NOTE]
+> When transactions are aggregated, the staff member assigned to the transaction is no longer available to the **Top Staff Sales Report**, meaning that the **Top Staff Sales Report** won't show all transactions. We recommend that you don't use the **Top Staff Sales Report** with aggregated transactions.
 
 ### Journal vouchers
 
@@ -203,3 +187,4 @@ Other, back-end improvements that users can see have been made to the statement 
 
 
 [!INCLUDE[footer-include](../includes/footer-banner.md)]
+

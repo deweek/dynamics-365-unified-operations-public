@@ -2,9 +2,9 @@
 # required metadata
 
 title: Removed or deprecated features in Dynamics 365 Finance 
-description: This topic describes features that have been removed, or that are planned for removal from Dynamics 365 Finance.
-author: roschlom
-ms.date: 12/03/2021
+description: This article describes features that have been removed, or that are planned for removal from Dynamics 365 Finance.
+author: kfend
+ms.date: 06/29/2022
 ms.topic: article
 ms.prod: 
 ms.technology: 
@@ -15,11 +15,11 @@ ms.technology:
 # ROBOTS: 
 audience: Application User, Developer, IT Pro
 # ms.devlang: 
-ms.reviewer: roschlom
+ms.reviewer: kfend
 # ms.tgt_pltfrm: 
 ms.search.region: Global
 # ms.search.industry: 
-ms.author: roschlom
+ms.author: kfend
 ms.search.validFrom: 2020-03-02 
 ms.dyn365.ops.version: Platform update 33
 
@@ -29,7 +29,7 @@ ms.dyn365.ops.version: Platform update 33
 
 [!include [banner](../includes/banner.md)]
 
-This topic describes features that have been removed, or that are planned for removal from Dynamics 365 Finance.
+This article describes features that have been removed, or that are planned for removal from Dynamics 365 Finance.
 
 - A *removed* feature is no longer available in the product.
 - A *deprecated* feature is not in active development and may be removed in a future update.
@@ -37,7 +37,60 @@ This topic describes features that have been removed, or that are planned for re
 This list is intended to help you consider these removals and deprecations for your own planning. 
 
 > [!NOTE]
-> Detailed information about objects in Finance and Operations apps can be found in the [Technical reference reports](/dynamics/s-e/global/axtechrefrep_61). You can compare the different versions of these reports to learn about objects that have changed or been removed in each version of Finance and Operations apps.
+> Detailed information about objects in finance and operations apps can be found in the [Technical reference reports](/dynamics/s-e/global/axtechrefrep_61). You can compare the different versions of these reports to learn about objects that have changed or been removed in each version of finance and operations apps.
+
+## Features removed or deprecated in the Finance 10.0.30 release
+
+### Revenue recognition
+
+[Revenue recognition](../../finance/accounts-receivable/revenue-recognition-overview.md)
+
+| &nbsp;  | &nbsp;  |
+|---|---|
+| **Reason for deprecation/removal** |Replaced by improved functionality, [Subscription billing](../../finance/accounts-receivable/subscription-billing-summary.md)
+| **Replaced by another feature?**   | Yes |
+| **Product areas affected** | Application |
+| **Deployment option** | All |
+| **Status** | Deprecated: After April 2023, the Revenue recognition functionality in Dynamics 365 Finance will no longer receive support with bug fixes. Customers will be asked to use the improved functionality, [Subscription billing](../../finance/accounts-receivable/subscription-billing-summary.md). In October 2023, the Revenue recognition feature will no longer be available. Customers will be asked to move to the improved Subscription billing functionality. For the bundle feature as part of revenue recognition, there is no replacement functionality planned at this time.|
+
+## Features removed or deprecated in the Finance 10.0.29 release
+
+### Stock transfer orders that have tax on the transfer price
+
+[Stock transfer orders that have tax on the transfer price](../../finance/localizations/apac-ind-gst-stock-transfer-transactions.md)
+
+| &nbsp;  | &nbsp;  |
+|---|---|
+| **Reason for deprecation/removal** | Replaced by improved functionality, [Stock transfer orders for India](../../finance/localizations/apac-ind-stock-transfer.md)|
+| **Replaced by another feature?**   | Yes |
+| **Product areas affected** | Application |
+| **Deployment option** | All |
+| **Status** | Deprecated: After April 2023, the **Stock transfer orders that have tax on the transfer price** functionality will no longer receive support with bug fixes and security fixes. Customers will be asked to use the improved functionality, [Stock transfer orders for India](../../finance/localizations/apac-ind-stock-transfer.md). After October 2023, the **Stock transfer orders that have tax on the transfer price** functionality will be no longer available, and customers will be asked to move to the improved functionality. |
+
+### Bank statement import and export of positive pay file
+
+| &nbsp;  | &nbsp;  |
+|---|---|
+| **Reason for deprecation/removal** |Replaced by improved functionality, import bank statements and export positive pay files.| 
+| **Replaced by another feature?**   | Yes |
+| **Product areas affected**         | Application |
+| **Deployment option**              | All |
+| **Status**                         | Deprecated: XSLT functionality for importing and exporting files will no longer receive support with bug fixes and security fixes. Customers will be asked to use the improved functionality: [Set up positive pay files by using Electronic reporting](../../finance/accounts-payable/set-up-positive-pay-er.md) and [Set up advanced bank reconciliation import by using Electronic reporting](../../finance/accounts-payable/import-bai2-er.md). After September 2022, the XSLT functionality will be no longer available, and customers will be asked to move to the improved functionality.|
+
+
+## Features removed or deprecated in the Finance 10.0.26 release
+
+### Sales tax report for Finland (design based on reporting codes)
+
+[Sales tax report for Finland](../localizations/emea-fin-sales-tax-payment-report-finland.md)
+
+| &nbsp; | &nbsp; |
+|------------|--------------------|
+| **Reason for deprecation/removal** | Replaced with a new VAT declaration design, [VAT declaration for Finland](../localizations/emea-fin-vat-declaration.md). |
+| **Replaced by another feature?**   | Yes |
+| **Product areas affected**         | Application |
+| **Deployment option**              | All |
+| **Status**                         | Deprecated: By March 1, 2023, we plan to no longer support the Sales tax report for Finland (Finnish report layout). New **VAT declaration TXT (FI**) and **VAT declaration Excel (FI)** Electronic reporting (ER) formats are introduced under the **Tax declaration** model. |
 
 ## Features removed or deprecated in the Finance 10.0.24 release
 
@@ -210,3 +263,4 @@ To learn more about features that have been removed or deprecated in previous re
 
 
 [!INCLUDE[footer-include](../../includes/footer-banner.md)]
+

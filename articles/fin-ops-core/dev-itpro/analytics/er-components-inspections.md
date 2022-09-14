@@ -1,42 +1,32 @@
 ---
-# required metadata
-
 title: Inspect the configured ER component to prevent runtime issues
-description: This topic explains how to inspect the configured Electronic reporting (ER) components to prevent runtime issues that might occur.
-author: NickSelin
-ms.date: 08/26/2021
+description: This article explains how to inspect the configured Electronic reporting (ER) components to prevent runtime issues that might occur.
+author: kfend
+ms.date: 01/03/2022
 ms.topic: article
 ms.prod: 
 ms.technology: 
-
-# optional metadata
-
-ms.search.form: ERSolutionTable, ERDataModelDesigner, ERModelMappingTable, ERModelMappingDesigner, EROperationDesigner
-# ROBOTS: 
 audience: Application User, Developer, IT Pro
-# ms.devlang: 
 ms.reviewer: kfend
-# ms.tgt_pltfrm: 
-ms.custom: 220314
-ms.assetid: 
 ms.search.region: Global
-# ms.search.industry: 
-ms.author: nselin
+ms.author: filatovm
 ms.search.validFrom: 2016-06-30
 ms.dyn365.ops.version: Version 7.0.0
-
+ms.custom: 220314
+ms.assetid: 
+ms.search.form: ERSolutionTable, ERDataModelDesigner, ERModelMappingTable, ERModelMappingDesigner, EROperationDesigner
 ---
 
 # Inspect the configured ER component to prevent runtime issues
 
 [!include[banner](../includes/banner.md)]
 
-Every configured [Electronic reporting (ER)](general-electronic-reporting.md) [format](general-electronic-reporting.md#FormatComponentOutbound) and [model mapping](general-electronic-reporting.md#data-model-and-model-mapping-components) component can be [validated](er-fillable-excel.md#validate-an-er-format) at design time. During this validation, a consistency check runs to help prevent runtime issues that might occur, such as execution errors and performance degradation. For every issue that is found, the check provides the path of a problematic element. For some issues, an automatic fix is available.
+Every configured [Electronic reporting (ER)](general-electronic-reporting.md) [format](er-overview-components.md#format-components-for-outgoing-electronic-documents) and [model mapping](er-overview-components.md#model-mapping-component) component can be [validated](er-fillable-excel.md#validate-an-er-format) at design time. During this validation, a consistency check runs to help prevent runtime issues that might occur, such as execution errors and performance degradation. For every issue that is found, the check provides the path of a problematic element. For some issues, an automatic fix is available.
 
 By default, the validation is automatically applied in the following cases for an ER configuration that contains the previously mentioned ER components:
 
-- You [import](general-electronic-reporting.md#importing-an-er-component-from-lcs-to-use-it-internally) a new [version](general-electronic-reporting.md#component-versioning) of an ER configuration into your instance of Microsoft Dynamics 365 Finance.
-- You change the [status](general-electronic-reporting.md#component-versioning) of the editable ER configuration from **Draft** to **Completed**.
+- You [import](general-electronic-reporting.md#importing-an-er-component-from-lcs-to-use-it-internally) a new version of an ER configuration into your instance of Microsoft Dynamics 365 Finance.
+- You change the status of the editable ER configuration from **Draft** to **Completed**.
 - You [rebase](general-electronic-reporting.md#upgrading-a-format-selecting-a-new-version-of-base-format-rebase) an editable ER configuration by applying a new base version.
 
 You can explicitly run this validation. Select one of the following three options, and follow the steps that are provided:
@@ -85,7 +75,7 @@ ER uses the following categories to group consistency check inspections:
 
 ## List of inspections
 
-The following table provides an overview of the inspections that ER provides. For more information about these inspections, use the links in the first column to go to the relevant sections of this topic. Those sections explain the types of components that ER provides inspections for and how you can reconfigure ER components to help prevent issues.
+The following table provides an overview of the inspections that ER provides. For more information about these inspections, use the links in the first column to go to the relevant sections of this article. Those sections explain the types of components that ER provides inspections for and how you can reconfigure ER components to help prevent issues.
 
 <table>
 <thead>
@@ -241,6 +231,15 @@ The following table provides an overview of the inspections that ER provides. Fo
 <td>Error</td>
 <td>There are more than two range components without replication. Please, remove unnecessary components.</td>
 </tr>
+<tr>
+<td><a href='#i18'>Executability of an expression with ORDERBY function</a></td>
+<td>Executability</td>
+<td>Error</td>
+<td>
+<p>The list expression of ORDERBY function is not queryable.</p>
+<p><b>Runtime error:</b> Sorting is not supported. Validate the configuration to get more details about this.</p>
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -370,7 +369,7 @@ The following steps show how this issue might occur.
 8. Name the new nested field **$AccNumber**, and configure it so that it contains the expression `TRIM(Vendor.AccountNum)`.
 9. Select **Validate** to inspect the editable model mapping component on the **Model mapping designer** page and verify that the `FILTER(Vendor, Vendor.AccountNum="US-101")` expression in the **Vendor** data source can be queried.
 
-    ![Verifying that the expression can be queried on the Model mapping designer page.](./media/er-components-inspections-04.gif)
+    ![Verifying that the expression that has the FILTER function can be queried on the Model mapping designer page.](./media/er-components-inspections-04.gif)
 
 10. Notice that a validation error occurs, because the **Vendor** data source contains a nested field of the **Calculated field** type that doesn't allow the expression of the **FilteredVendor** data source to be translated to the direct SQL statement.
 
@@ -766,7 +765,7 @@ Modify the configured format by removing the binding for the **Statement\\Party\
 
 ## <a id="i12"></a>Not linked template
 
-When you [manually](er-fillable-excel.md#manual-entry) configure an ER format component to use a template to generate an outbound document, you must manually add the **Excel\\File** element, add the required template as an attachment of the editable component, and select that attachment in the added **Excel\\File** element. In this way, you indicate that the added element will fill the selected template at runtime. When you configure a format component version in **Draft** [status](general-electronic-reporting.md#component-versioning), you might add several templates to the editable component and then select each template in the **Excel\\File** element to run the ER format. In this way, you can see how different templates are filled at runtime. If you have templates that aren't selected in any **Excel\\File** elements, the ER format designer warns you that those templates will be deleted from the editable ER format component version when its status is changed from **Draft** to **Completed**.
+When you [manually](er-fillable-excel.md#manual-entry) configure an ER format component to use a template to generate an outbound document, you must manually add the **Excel\\File** element, add the required template as an attachment of the editable component, and select that attachment in the added **Excel\\File** element. In this way, you indicate that the added element will fill the selected template at runtime. When you configure a format component version in **Draft** status, you might add several templates to the editable component and then select each template in the **Excel\\File** element to run the ER format. In this way, you can see how different templates are filled at runtime. If you have templates that aren't selected in any **Excel\\File** elements, the ER format designer warns you that those templates will be deleted from the editable ER format component version when its status is changed from **Draft** to **Completed**.
 
 The following steps show how this issue might occur.
 
@@ -897,6 +896,47 @@ No option to automatically fix this issue is available.
 #### Option 1
 
 Modify the configured format by changing the **Replication direction** property for all inconsistent **Excel\\Range** components.
+
+## <a id="i18"></a>Executability of an expression with ORDERBY function
+
+The built-in [ORDERBY](er-functions-list-orderby.md) ER function is used to sort the records of an ER data source of the **[Record list](er-formula-supported-data-types-composite.md#record-list)** type that is specified as an argument of the function.
+
+Arguments of the `ORDERBY` function can be [specified](er-functions-list-orderby.md#syntax-2) to sort records of application tables, views, or data entities by placing a single database call to get the sorted data as a list of records. A data source of the **Record list** type is used as an argument of the function and specifies the application source for the call.
+
+ER checks whether a direct database query can be established to a data source that is referred to in the `ORDERBY` function. If a direct query can't be established, a validation error occurs in the ER model mapping designer. The message that you receive states that the ER expression that includes the `ORDERBY` function can't be run at runtime.
+
+The following steps show how this issue might occur.
+
+1. Start to configure the ER model mapping component.
+2. Add a data source of the **Dynamics 365 for Operations \\ Table records** type.
+3. Name the new data source **Vendor**. In the **Table** field, select **VendTable** to specify that this data source will request the **VendTable** table.
+4. Add a data source of the **Calculated field** type.
+5. Name the new data source **OrderedVendors**, and configure it so that it contains the expression `ORDERBY("Query", Vendor, Vendor.AccountNum)`.
+ 
+    ![Configuring data sources on the Model mapping designer page.](./media/er-components-inspections-18-1.png)
+
+6. Select **Validate** to inspect the editable model mapping component on the **Model mapping designer** page and verify that the expression in the **OrderedVendors** data source can be queried.
+7. Modify the **Vendor** data source by adding a nested field of the **Calculated field** type to get the trimmed vendor account number.
+8. Name the new nested field **$AccNumber**, and configure it so that it contains the expression `TRIM(Vendor.AccountNum)`.
+9. Select **Validate** to inspect the editable model mapping component on the **Model mapping designer** page and verify that the expression in the **Vendor** data source can be queried.
+
+    ![Verifying that the expression in the Vendor data source can be queried on the Model mapping designer page.](./media/er-components-inspections-18-2.png)
+
+10. Notice that a validation error occurs, because the **Vendor** data source contains a nested field of the **Calculated field** type that doesn't allow the expression of the **OrderedVendors** data source to be translated to the direct database statement. The same error occurs at runtime if you ignore the validation error and select **Run** to run this model mapping.
+
+### Automatic resolution
+
+No option to automatically fix this issue is available.
+
+### Manual resolution
+
+#### Option 1
+
+Instead of adding a nested field of the **Calculated field** type to the **Vendor** data source, add the **$AccNumber** nested field to the **FilteredVendors** data source, and configure the field so that it contains the expression `TRIM(FilteredVendor.AccountNum)`. In this way, the `ORDERBY("Query", Vendor, Vendor.AccountNum)` expression can be run at the database level, and the calculation of the **$AccNumber** nested field can be done after.
+
+#### Option 2
+
+Change the expression of the **FilteredVendors** data source from `ORDERBY("Query", Vendor, Vendor.AccountNum)` to `ORDERBY("InMemory", Vendor, Vendor.AccountNum)`. We don't recommend that you change the expression for a table that has a large volume of data (transactional table), because all records will be fetched, and ordering of the required records will be done in memory. Therefore, this approach can cause poor performance.
 
 ## Additional resources
 

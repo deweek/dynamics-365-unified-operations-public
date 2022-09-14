@@ -2,16 +2,17 @@
 # required metadata
 
 title: Installation steps for Retail channel components in an on-premises environment
-description: This topic covers the installation steps for Commerce channel components in an on-premises environment. 
+description: This article covers the installation steps for Commerce channel components in an on-premises environment. 
 author: jashanno
-ms.date: 11/22/2021
+ms.date: 08/31/2022
 ms.topic: article
-ms.prod: 
+ms.prod: dynamics-365 
+ms.service:
 ms.technology: 
 
 # optional metadata
 
-# ms.search.form:  [Operations AOT form name to tie this topic to]
+# ms.search.form:  [Operations AOT form name to tie this article to]
 audience: IT Pro
 # ms.devlang: 
 ms.reviewer: sericks
@@ -28,7 +29,7 @@ ms.dyn365.ops.version: 8.1.1
 
 [!include[banner](../includes/banner.md)]
 
-This topic covers the installation steps for Commerce channel components in an on-premises environment.
+This article covers the installation steps for Commerce channel components in an on-premises environment.
 
 > [!IMPORTANT]
 > There is currently a known issue where self-service packages will not correctly apply to on-premises environments. For that reason it is recommended to pull the installers directly from Microsoft Dynamics Lifecycle Services (LCS) and use them as needed. Commerce headquarters would thereby no longer be used to download the installers but only the configuration files as needed.
@@ -47,7 +48,7 @@ Before you can start installation of channel components, you must first complete
 ## Installation steps
 
 1. On the previously created [Application share](setup-deploy-on-premises-pu12.md#setupfile), (not the **LocalAgent** share folder), create a new folder called **selfservicepackages** in the root directory of the share location.  
-2. On each AOS computer, create an easily accessible directory, such as **C:/selfservicepackages**.
+2. On each AOS computer, create an easily accessible directory, such as **C:/RetailSelfService**.
 3. On one AOS computer (which one does not matter), run the following PowerShell script.
 
     ```powershell
@@ -58,7 +59,7 @@ Before you can start installation of channel components, you must first complete
     > - The steps above apply to version 10.0 and later.
     >
     > ```powershell
-    > .\RetailUpdateDatabase.ps1 -DatabaseServer '<Database server name for AOS database>' -DatabaseName '<Database name for AOS database>' -envName '<Environment name>' -RetailSelfServicePackages '<Local path of Retail self-service packages, such as **C:/selfservicepackages**>' -SendProductSupportTelemetryToMicrosoft
+    > .\RetailUpdateDatabase.ps1 -DatabaseServer '<Database server name for AOS database>' -DatabaseName '<Database name for AOS database>' -envName '<Environment name>' -RetailSelfServicePackages '<Local path of Retail self-service packages, such as **C:/RetailSelfService**>' -SendProductSupportTelemetryToMicrosoft
     > ```
     > - The parameter **-envName** should be known based on creation when the environment is generated.
     > - The legacy parameters **-DatabaseServer** and **-DatabaseName** should be known based on the environment setup.
@@ -75,7 +76,7 @@ Before you can start installation of channel components, you must first complete
     > The parameter **-RetailSelfServicePackages** is the full path location created in the beginning of this step (**C:/selfservicepackages**).
 
 5.	Download the appropriate binary update from LCS to have the Commerce installers. For instructions, see [Download updates from Lifecycle Services (LCS)](../migration-upgrade/download-hotfix-lcs.md).
-6.	Extract the zip file and copy all self-service installers into the folder **C:/selfservicepackages** defined and created in step 2 in each of the AOS machines. The six self-service installers include: 
+6.	Extract the zip file and copy all self-service installers into the folder **C:/RetailSelfService** defined and created in step 2 in each of the AOS machines. The six self-service installers include: 
     - AsyncServerConnectorServiceSetup.exe
     - RealtimeServiceAX63Setup.exe
     - HardwareStationSetup.exe
@@ -93,17 +94,13 @@ Before you can start installation of channel components, you must first complete
 10.  Edit the newly generated Server application and select **Reset the Secret**.
 
      > [!NOTE]
-     > It is an important security measure to run this script for each Commerce Scale Unit.  This maximizes security and minimizes the workload in case of a security breach. 
-     >
-     > It is critical to keep this secret safe. This secret should only be copied once and never stored on the system.  The Client ID and Secret generated will be used during the Commerce Scale Unit installer, so it is required to be used at a later time.  You can always reset the secret again, but it must then be updated on any Commerce Scale Unit that used the previous secret.
-
+     > - It is an important security measure to run this script for each Commerce Scale Unit.  This maximizes security and minimizes the workload in case of a security breach. 
+     > - It is critical to keep this secret safe. This secret should only be copied once and never stored on the system.  The Client ID and Secret generated will be used during the Commerce Scale Unit installer, so it is required to be used at a later time.  You can always reset the secret again, but it must then be updated on any Commerce Scale Unit that used the previous secret.
+     > - It is possible that steps 11 through 17 below will already have been completed, with values added and the connector fully configured. If this is the case, skip steps 11 through 17 and continue on to step 18. What is important is to have a selectable profile title ("Default" in this case).
+    
 11.  Go to **Retail and Commerce \> Headquarters setup \> Commerce scheduler \> Connector for Microsoft Dynamics AX**.
 12.  Select **Edit** on the Action pane.
-13.  In the **Profile** field, enter the value **Default**.  If needed, enter a description in the **Description** field.
-
-     > [!NOTE]
-     > It is possible for the following fields in steps 12 through 14 to already have values. If this occurs, skip those steps and continue from there. What is important is to have a selectable profile title (default in this case).
-
+13.  In the **Profile** field, enter the value "Default".  If needed, enter a description in the **Description** field.
 14.  In the  **Web application name** field, enter **RetailCDXRealTimeService**.
 15.  In the **Protocol** field, select **https**.
 16.  In the **Common name** field, enter **AXServiceUser@contoso.com**.

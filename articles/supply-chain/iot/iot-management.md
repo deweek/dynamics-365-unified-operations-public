@@ -2,9 +2,9 @@
 # required metadata
 
 title: Monitor and manage IoT Intelligence
-description: This topic explains how to monitor and manage IoT Intelligence.
-author: tonyafehr
-ms.date: 08/16/2019
+description: This article explains how to monitor and manage IoT Intelligence.
+author: johanhoffmann
+ms.date: 08/04/2022
 ms.topic: article
 ms.prod: 
 ms.technology: 
@@ -15,12 +15,12 @@ ms.search.form:
 # ROBOTS: 
 audience: Application User
 # ms.devlang: 
-ms.reviewer: tfehr
+ms.reviewer: kamaybac
 # ms.tgt_pltfrm: 
 ms.custom: 
 ms.search.region: Global
 # ms.search.industry: 
-ms.author: tfehr
+ms.author: johanho
 ms.search.validFrom: 2020-04-04
 ms.dyn365.ops.version: 10.0.5
 
@@ -29,8 +29,9 @@ ms.dyn365.ops.version: 10.0.5
 # Monitor and manage IoT Intelligence
 
 [!include [banner](../../includes/banner.md)]
+[!INCLUDE [iot-sdi-announcement](../../includes/iot-sdi-announcement.md)]
 
-This topic explains how to monitor and manage IoT Intelligence.
+This article explains how to monitor and manage IoT Intelligence.
 
 ## <a id="monitor-scenarios"></a>Monitor scenarios in Microsoft Dynamics 365 Supply Chain Management
 
@@ -59,11 +60,10 @@ When a scenario is running, these changes are prohibited:
 
 ## Simulation options
 
-You can simulate factory machine signals. For more information, see these topics:
+You can simulate factory machine signals. For more information, see these articles:
 
 + [Connect IoT DevKit AZ3166 to Azure IoT Hub](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)
 + [Connect Raspberry Pi online simulator to Azure IoT Hub (Node.js)](/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)
-+ [Device Simulation solution accelerator overview](/azure/iot-accelerators/iot-accelerators-device-simulation-overview)
 
 
 [!INCLUDE[footer-include](../../includes/footer-banner.md)]

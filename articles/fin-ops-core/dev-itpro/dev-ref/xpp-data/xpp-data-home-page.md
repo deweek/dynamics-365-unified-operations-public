@@ -1,15 +1,15 @@
 ---
 title: X++ data selection and manipulation overview
-description: This topic provides links to topics about X++ data selection and manipulation.
-author: tonyafehr
+description: This article provides links to topics about X++ data selection and manipulation.
+author: josaw1
 ms.date: 06/16/2020
+ms.topic: overview
 audience: Developer
-ms.reviewer: tfehr
-ms.custom: "intro-internal"
+ms.reviewer: josaw
 ms.search.region: Global
-ms.author: tfehr
-ms.dyn365.ops.version: AX 7.0.0
+ms.author: josaw
 ms.search.validFrom: 2016-02-28
+ms.dyn365.ops.version: AX 7.0.0
 ---
 
 # X++ data selection and manipulation overview
@@ -45,7 +45,7 @@ Here are some other statements that you will use in data access:
 
 [Transactional integrity](xpp-transaction.md) helps prevent data corruption and improve scalability.
 
-The [Conversion of operations from set-based to record-by-record](xpp-data-perf.md) topic provides information about how you can use the record set–based statements and methods more efficiently.
+The [Conversion of operations from set-based to record-by-record](xpp-data-perf.md) article provides information about how you can use the record set–based statements and methods more efficiently.
 
 You can also use the [SysDa classes](../sysda.md) to retrieve and modify data. The extensible SysDa API provides almost all the data access possibilities that are available in X++.
 

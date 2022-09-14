@@ -1,25 +1,26 @@
 ---
-# required metadata
-
 title: Deployment guidelines for the fiscal registration service integration sample for Austria (legacy)
-description: This topic provides guidelines for deploying the fiscal integration sample for Austria from the Microsoft Dynamics 365 Commerce Retail software development kit (SDK).
+description: This article provides guidelines for deploying the fiscal integration sample for Austria from the Microsoft Dynamics 365 Commerce Retail software development kit (SDK).
 author: EvgenyPopovMBS
-ms.date: 12/20/2021
+ms.date: 08/17/2022
 ms.topic: article
 audience: Application User
 ms.reviewer: v-chgriffin
 ms.search.region: Global
-ms.author: epopov
-ms.search.validFrom: 2019-3-1
+ms.author: josaw
+ms.search.validFrom: 2019-03-01
 
 ---
 # Deployment guidelines for the fiscal registration service integration sample for Austria (legacy)
 
 [!include [banner](../includes/banner.md)]
 
-This topic provides guidelines for deploying the fiscal registration service integration sample for Austria from the Microsoft Dynamics 365 Commerce Retail software development kit (SDK) on a developer virtual machine (VM) in Microsoft Dynamics Lifecycle Services (LCS). For more information about this fiscal integration sample, see [Fiscal registration service integration sample for Austria](emea-aut-fi-sample.md). 
+> [!IMPORTANT]
+> You must follow the guidelines in this article only if you're using Microsoft Dynamics 365 Commerce version 10.0.28 or earlier. As of Commerce version 10.0.29, the fiscal registration service integration sample for Austria is available in the Commerce software development kit (SDK). For more information, see [Configure channel components](./emea-aut-fi-sample.md#configure-channel-components).
 
-The fiscal integration sample for Austria is part of the Retail SDK. For information about how to install and use the SDK, see [Retail software development kit (SDK) architecture](../dev-itpro/retail-sdk/retail-sdk-overview.md). The fiscal integration sample consists of extensions for the Commerce runtime (CRT), Hardware station, and point of sale (POS). To run this sample, you must modify and build the CRT, Hardware station, and POS projects. We recommend that you use an unmodified Retail SDK to make the changes that are described in this topic. We also recommend that you use a source control system such as Azure DevOps where no files have been changed yet.
+This article provides guidelines for deploying the fiscal registration service integration sample for Austria from the Dynamics 365 Commerce Retail SDK on a developer virtual machine (VM) in Microsoft Dynamics Lifecycle Services (LCS). For more information about this fiscal integration sample, see [Fiscal registration service integration sample for Austria](emea-aut-fi-sample.md). 
+
+The fiscal integration sample for Austria is part of the Retail SDK. For information about how to install and use the SDK, see [Retail software development kit (SDK) architecture](../dev-itpro/retail-sdk/retail-sdk-overview.md). The fiscal integration sample consists of extensions for the Commerce runtime (CRT), Hardware station, and point of sale (POS). To run this sample, you must modify and build the CRT, Hardware station, and POS projects. We recommend that you use an unmodified Retail SDK to make the changes that are described in this article. We also recommend that you use a source control system such as Azure DevOps where no files have been changed yet.
 
 ## Development environment
 
@@ -84,11 +85,15 @@ The CRT extension components are included in the CRT samples. To complete the fo
     <add source="assembly" value="Microsoft.Dynamics.Commerce.Runtime.XZReportsAustria" />
     ```
 
-### Enable Hardware station extensions
+### Enable fiscal connector extensions
+
+You can enable fiscal connector extensions on the [Hardware station](fiscal-integration-for-retail-channel.md#fiscal-registration-is-done-via-a-device-connected-to-the-hardware-station) or the [POS register](fiscal-integration-for-retail-channel.md#fiscal-registration-is-done-via-a-device-or-service-in-the-local-network).
+
+#### Enable Hardware station extensions
 
 The Hardware station extension components are included in the Hardware station samples. To complete the following procedures, open the **HardwareStationSamples.sln** solution under **RetailSdk\\SampleExtensions\\HardwareStation**.
 
-#### EFRSample component
+##### EFRSample component
 
 1. Find the **HardwareStation.Extension.EFRSample** project, and build it.
 2. In the **Extension.EFRSample\\bin\\Debug** folder, find the following assembly files:
@@ -111,6 +116,30 @@ The Hardware station extension components are included in the Hardware station s
     ``` xml
     <add source="assembly" value="Contoso.Commerce.HardwareStation.EFRSample.dll" />
     ```
+
+#### Enable POS extensions
+
+The POS extension sample is located in the **src\\FiscalIntegration\\PosFiscalConnectorSample** folder of the [Dynamics 365 Commerce Solutions](https://github.com/microsoft/Dynamics365Commerce.Solutions/) repository.
+
+To use the POS extension sample in the legacy SDK, follow these steps.
+
+1. Copy the **Pos.Extension** folder to the POS **Extensions** folder of the legacy SDK (for example, `C:\RetailSDK\src\POS\Extensions`).
+1. Rename the copy of the **Pos.Extension** folder **PosFiscalConnector**.
+1. Remove the following folders and files from the **PosFiscalConnector** folder:
+
+    - bin
+    - DataService
+    - devDependencies
+    - Libraries
+    - obj
+    - Contoso.PosFiscalConnectorSample.Pos.csproj
+    - RetailServerEdmxModel.g.xml
+    - tsconfig.json
+
+1. Open the **CloudPos.sln** or **ModernPos.sln** solution.
+1. In the **Pos.Extensions** project, include the **PosFiscalConnector** folder.
+1. Open the **extensions.json** file, and add the **PosFiscalConnector** extension.
+1. Build the SDK.
 
 ### Enable Modern POS extension components
 
@@ -203,7 +232,7 @@ The previous procedure enables the extensions that are components of the fiscal 
 
 ## Design of extensions
 
-The fiscal registration service integration sample for Austria is based on the [fiscal integration functionality](fiscal-integration-for-retail-channel.md). For more information about the design of the fiscal integration solution, see the [overview of a fiscal integration sample design](fiscal-integration-for-retail-channel.md#fiscal-registration-process-and-fiscal-integration-samples-for-fiscal-devices).
+The fiscal registration service integration sample for Austria is based on the [fiscal integration functionality](fiscal-integration-for-retail-channel.md). For more information about the design of the fiscal integration solution, see the [overview of a fiscal integration sample design](fiscal-integration-for-retail-channel.md#fiscal-registration-process-and-fiscal-integration-samples-for-fiscal-devices-and-services).
 
 ### Commerce runtime extension design
 
@@ -240,9 +269,7 @@ The purpose of these files is to enable settings for the document provider to be
 
 ### Hardware station extension design
 
-The purpose of the extension that is a fiscal connector is to communicate with the fiscal registration service.
-
-The Hardware station extension is **HardwareStation.Extension.EFRSample**. It uses the HTTP protocol to submit documents that the CRT extension generates to the fiscal registration service. It also handles the responses that are received from the fiscal registration service.
+The purpose of the fiscal connector extension is to communicate with the fiscal registration service. The Hardware station extension is named **HardwareStation.Extension.EFRSample**. It uses the HTTP or HTTPS protocol to submit documents that the CRT extension generates to the fiscal registration service. It also handles the responses that are received from the fiscal registration service.
 
 #### Request handler
 
@@ -262,3 +289,26 @@ The configuration file is located in the **Configuration** folder of the extensi
 
 - **Endpoint address** – The URL of the fiscal registration service.
 - **Timeout** – The amount of time, in milliseconds, that the driver will wait for a response from the fiscal registration service.
+
+### POS fiscal connector extension design
+
+The purpose of the POS fiscal connector extension is to communicate with the fiscal registration service from POS. It uses the HTTPS protocol for communication.
+
+#### Fiscal connector factory
+
+The fiscal connector factory maps the connector name to the fiscal connector implementation and is located in the **Pos.Extension\\Connectors\\FiscalConnectorFactory.ts** file. The connector name should match the fiscal connector name that is specified in Commerce headquarters.
+
+#### EFR fiscal connector
+
+The EFR fiscal connector is located in the **Pos.Extension\\Connectors\\Efr\\EfrFiscalConnector.ts** file. It implements the **IFiscalConnector** interface that supports the following requests:
+
+- **FiscalRegisterSubmitDocumentClientRequest** – This request sends documents to the fiscal registration service and returns a response from it.
+- **FiscalRegisterIsReadyClientRequest** – This request is used for a health check of the fiscal registration service.
+- **FiscalRegisterInitializeClientRequest** – This request is used to initialize the fiscal registration service.
+
+#### Configuration
+
+The configuration file is located in the **src\\FiscalIntegration\\Efr\\Configurations\\Connectors** folder of the [Dynamics 365 Commerce Solutions](https://github.com/microsoft/Dynamics365Commerce.Solutions/) repository. The purpose of the file is to enable settings for the fiscal connector to be configured from Commerce headquarters. The file format is aligned with the requirements for fiscal integration configuration. The following settings are added:
+
+- **Endpoint address** – The URL of the fiscal registration service.
+- **Timeout** – The amount of time, in milliseconds, that the connector will wait for a response from the fiscal registration service.

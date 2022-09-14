@@ -1,10 +1,10 @@
 ---
 # required metadata
 
-title: Use external data in cash flow forecasts
-description: This topic describes the setup steps that must be completed so that external data can be entered or imported into cash flow forecasts.
-author: rcarlson
-ms.date: 11/03/2021
+title: External data in cash flow forecasts
+description: This article describes the setup steps that must be completed so that external data can be entered or imported into cash flow forecasts.
+author: RyanCCarlson2
+ms.date: 02/16/2022
 ms.topic: article
 ms.prod: 
 ms.technology: 
@@ -15,23 +15,22 @@ ms.search.form: LedgerJournalSetup, LedgerJournalTable
 # ROBOTS: 
 audience: Application User
 # ms.devlang: 
-ms.reviewer: roschlom
+ms.reviewer: kfend
 # ms.tgt_pltfrm: 
 ms.custom: 15721
 ms.assetid: b4b406fa-b772-44ec-8dd8-8eb818a921ef
 ms.search.region: Global
 # ms.search.industry: 
-ms.author: peakerbl
+ms.author: rcarlson
 ms.search.validFrom: 2020-06-08
 ms.dyn365.ops.version: AX 10.0.12
 
 ---
-# Use external data in cash flow forecasts
+# External data in cash flow forecasts
 
 [!include [banner](../includes/banner.md)]
-[!include [preview banner](../includes/preview-banner.md)]
 
-External data can be entered or imported into cash flow forecasts. This topic describes the setup steps that are specific to the use of external data and that enable the external data to be included in a cash flow forecast.
+External data can be entered or imported into cash flow forecasts. This article describes the setup steps that are specific to the use of external data and that enable the external data to be included in a cash flow forecast.
 
 ## External data setup
 
@@ -43,7 +42,7 @@ For more information about how to set up cash flow forecasts, see [Cash flow for
 
 ## Enter external data
 
-To enter and modify external data for cash flow forecasts, you can use the **Open in Excel** experience. Select the **External data** button on the **Cash flow forecast setup** page, and then select either **Add External Data** or **Edit existing external data**. When the Microsoft Excel file is opened, you can enter information in the following fields:
+To enter and modify external data for cash flow forecasts, you can use the **Open in Excel** experience. Select the **External data** button on the **Cash flow forecast** workspace page, and then select either **Add External Data** or **Edit existing external data**. When the Microsoft Excel file is opened, you can enter information in the following fields:
 
 - **Entry ID** (unique)
 - **Description** (optional)

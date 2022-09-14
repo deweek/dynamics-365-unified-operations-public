@@ -2,7 +2,7 @@
 # required metadata
 
 title: Human Resources app in Teams
-description: This topic introduces the Microsoft Dynamics 365 Human Resources app in Microsoft Teams.
+description: This article introduces the Microsoft Dynamics 365 Human Resources app in Microsoft Teams.
 author: twheeloc
 ms.date: 12/15/2021
 ms.topic: article
@@ -15,19 +15,22 @@ ms.search.form: FeatureManagementWorkspace
 # ROBOTS: 
 audience: Application User
 # ms.devlang: 
-ms.search.scope: Human Resources
+
 # ms.tgt_pltfrm: 
 ms.custom: 7521
 ms.assetid: 
 ms.search.region: Global
 # ms.search.industry: 
-ms.author: anbichse
+ms.author: twheeloc
 ms.search.validFrom: 2020-05-18
 ms.dyn365.ops.version: Human Resources
 
 ---
 
 # Human Resources app in Teams
+
+
+[!INCLUDE [PEAP](../includes/peap-2.md)]
 
 [!include [Applies to Human Resources](../includes/applies-to-hr.md)]
 

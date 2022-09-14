@@ -1,35 +1,24 @@
 ---
-# required metadata
-
 title: WEEKNUM ER function
-description: This topic provides information about how the WEEKNUM Electronic reporting (ER) function is used.
-author: NickSelin
-ms.date: 12/03/2021
+description: This article provides information about how the WEEKNUM Electronic reporting (ER) function is used.
+author: kfend
+ms.date: 01/15/2022
 ms.prod: 
 ms.technology: 
-
-# optional metadata
-
-ms.search.form: ERDataModelDesigner, ERExpressionDesignerFormula, ERMappedFormatDesigner, ERModelMappingDesigner
-# ROBOTS: 
 audience: Application User, IT Pro
-# ms.devlang: 
 ms.reviewer: kfend
-# ms.tgt_pltfrm: 
-ms.custom: 58771
-ms.assetid: 
 ms.search.region: Global
-# ms.search.industry: 
-ms.author: nselin
+ms.author: filatovm
 ms.search.validFrom: 2021-12-03
 ms.dyn365.ops.version: AX 10.0.24
-
+ms.custom: 58771
+ms.assetid: 
+ms.search.form: ERDataModelDesigner, ERExpressionDesignerFormula, ERMappedFormatDesigner, ERModelMappingDesigner
 ---
 
 # WEEKNUM ER function
 
 [!include [banner](../includes/banner.md)]
-[!include [banner](../includes/preview-banner.md)]
 
 The `WEEKNUM` function returns an *[Integer](er-formula-supported-data-types-primitive.md#integer)* value that represents the week of the year that includes a specified *[Date](er-formula-supported-data-types-primitive.md#date)* value. The calculation is based on culture-dependent rules that define a calendar week and the first day of the week.
 

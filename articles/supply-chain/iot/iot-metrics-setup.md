@@ -2,9 +2,9 @@
 # required metadata
 
 title: Set up metrics for IoT Intelligence
-description: This topic explains how to set up metrics for IoT Intelligence.
-author: tonyafehr
-ms.date: 04/25/2020
+description: This article explains how to set up metrics for IoT Intelligence.
+author: johanhoffmann
+ms.date: 08/04/2022
 ms.topic: article
 ms.prod: 
 ms.technology: 
@@ -15,12 +15,12 @@ ms.technology:
 # ROBOTS: 
 audience: Application User, Developer, IT Pro
 # ms.devlang: 
-ms.reviewer: tfehr
+ms.reviewer: kamaybac
 # ms.tgt_pltfrm: 
 ms.custom:
 ms.search.region: Global
 # ms.search.industry: 
-ms.author: tfehr
+ms.author: johanho
 ms.search.validFrom: 2020-04-25
 ms.dyn365.ops.version: AX 7.0.0
 ---
@@ -28,6 +28,7 @@ ms.dyn365.ops.version: AX 7.0.0
 # Set up metrics for IoT Intelligence
 
 [!include [banner](../../includes/banner.md)]
+[!INCLUDE [iot-sdi-announcement](../../includes/iot-sdi-announcement.md)]
 
 ## Configure metrics
 

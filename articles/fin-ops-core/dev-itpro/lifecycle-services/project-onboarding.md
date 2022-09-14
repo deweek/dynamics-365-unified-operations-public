@@ -1,8 +1,8 @@
 ---
 title: Project onboarding
-description: This topic provides information about the Project onboarding wizard in Microsoft Dynamics Lifecycle Services.
+description: This article provides information about the Project onboarding wizard in Microsoft Dynamics Lifecycle Services.
 author: vetrivicky
-ms.date: 11/30/2020
+ms.date: 06/20/2022
 ms.topic: article
 ms.prod: 
 ms.technology: 
@@ -35,10 +35,10 @@ Microsoft relies on the information that you provide. You must provide the most 
 To access Project onboarding, sign in to LCS, and then, on the main menu, select **Project onboarding**.
 
 > [!NOTE]
-> Project onboarding is available for implementation projects and must be completed before any of the Microsoft-managed environments are deployed. For more information about implementation projects, see [Lifecycle Services (LCS) for Finance and Operations apps customers](lcs-works-lcs.md#lcs-workspace-for-the-current-versions-of-the-finance-and-operations-apps).
+> Project onboarding is available for implementation projects and must be completed before any of the Microsoft-managed environments are deployed. For more information about implementation projects, see [Lifecycle Services (LCS) for finance and operations apps customers](lcs-works-lcs.md#lcs-workspace-for-the-current-versions-of-the-finance-and-operations-apps).
 
 
-For more information about the onboarding process, see [Onboard an implementation project](../../fin-ops/imp-lifecycle/onboard.md#lcs-implementation-project-workspace), and watch the [Finance and Operations: Onboarding to Dynamics 365](https://community.dynamics.com/365/b/techtalks/posts/finance-and-operations-onboarding-to-dynamics-365-1-10-19) TechTalk.
+For more information about the onboarding process, see [Onboard an implementation project](../../fin-ops/imp-lifecycle/onboard.md#lcs-implementation-project-workspace), and watch the [finance and operations: Onboarding to Dynamics 365](https://community.dynamics.com/365/b/techtalks/posts/finance-and-operations-onboarding-to-dynamics-365-1-10-19) TechTalk.
 
 
 ## Onboarding steps
@@ -55,7 +55,7 @@ The **Welcome** page provides general guidance and information that you will nee
 
 - Provide the overview information for the implementation project.
 - Describe the vision and goals for the project in a few sentences. This information will help Microsoft understand the goals that you want to achieve and how you define success for the project.
-- Provide the Partner MPN ID, which you can get from the implementation partner team. If a partner is not involved or not yet identified, choose the appropriate option in the implementation partner drop-down list. Note that providing accurate partner data is a pre-requisite for [FastTrack Program](/dynamics365/fasttrack/?toc=%2fdynamics365%2fcommerce%2ftoc.json) assignment. You could miss the opportunity for valuable services if you do not provide the correct partner information. Once partner identified, you need to update the MPN ID.
+- Provide the Partner MPN ID, which you can get from the implementation partner team. If a partner is not involved or not yet identified, choose the appropriate option in the implementation partner drop-down list. Note that providing accurate partner data is a pre-requisite for [FastTrack Program](/dynamics365/fasttrack/?toc=/dynamics365/commerce/toc.json) assignment. You could miss the opportunity for valuable services if you do not provide the correct partner information. Once partner identified, you need to update the MPN ID.
 - Specify the estimated number of user licenses after full roll-out including current licenses. This number can differ from the current license purchase. If no change is planned, provide the current user license count. If a license type isn't applicable, enter **0** (zero).
 - If your implementation project is a demo project, or if you're moving from another tenant, provide the details.
 
@@ -81,6 +81,9 @@ For more information, see [Configuring project security](configure-lcs-security.
 
 - Connect LCS and Azure DevOps to maintain the application lifecycle.
 - Enter the root URL of your Azure DevOps account and the personal access token that you obtained from Azure DevOps. The Azure DevOps account should belong to the customer.
+
+> [!NOTE]
+> LCS requires entering the Azure DevOps root URL in the legacy format. The legacy format is `https://ACCOUNT.visualstudio.com` and `https://contoso.visualstudio.com` is an example.
 
 ## Configure Azure DevOps
 

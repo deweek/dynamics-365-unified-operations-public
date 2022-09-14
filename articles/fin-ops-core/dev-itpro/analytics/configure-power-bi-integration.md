@@ -2,9 +2,9 @@
 # required metadata
 
 title: Configure PowerBI.com integration
-description: This topic describes how to configure a new Finance and Operations environment to support integration with PowerBI.com.
+description: This article describes how to configure a new finance and operations environment to support integration with PowerBI.com.
 author: RichdiMSFT
-ms.date: 12/01/2021
+ms.date: 01/21/2022
 ms.topic: article
 ms.prod: 
 ms.technology: 
@@ -63,8 +63,7 @@ By completing this configuration step, you enable to contact the PowerBI.com ser
     - **Name** – Enter the name of your app.
     - **Supported account types** – Enter only accounts that are directly in this organization (single tenant).
     - **Application type** – Enter **Web**.
-    - **Redirect URI** – Enter the base URL of your client, such as `https://contosoax7.cloud.dynamics.com`.
-
+    - **Redirect URI** – Enter the base URL of your client with **oauth** appended to the end, such as `https://contosoax7.cloud.dynamics.com/oauth`.
     
 4. Select **Register**.
 5. Copy the **Application (client) ID** value. You will use this value to connect to the PowerBI.com service.
@@ -110,9 +109,9 @@ By completing this configuration step, you enable to contact the PowerBI.com ser
     > [!IMPORTANT]
     > Be sure to capture the **Application (client) ID** and **Secret Value** values before you continue.
 
-## Specify Power BI settings in Finance and Operations
+## Specify Power BI settings in finance and operations
 
-1. In the Finance and Operations client, open the **PowerBI.com configuration** page.
+1. In the finance and operations client, open the **PowerBI.com configuration** page.
 
     ![PowerBI.com configuration page](./media/D365-PBI-Configuration.png)
 
@@ -161,3 +160,4 @@ In the procedure above, after you select **Accept**, you might receive the follo
 | Sorry, something went wrong. The authentication process was not successful. Please contact your system administrator.  | This may occur in cases where service keys have expired. We recommend performing the registration process above, starting with step 3. When complete, be sure to update the PowerBI.com settings at **AX client \> System administration \> Set up \> PowerBI.com integration**. |
 
 [!INCLUDE[footer-include](../../../includes/footer-banner.md)]
+

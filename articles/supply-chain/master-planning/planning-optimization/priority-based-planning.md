@@ -1,14 +1,14 @@
 ---
 title: Priority-based planning
-description: This topic describes the priority-based planning feature of Microsoft Dynamics 365 Supply Chain Management.
-author: ChristianRytt
+description: This article describes the priority-based planning feature of Microsoft Dynamics 365 Supply Chain Management.
+author: t-benebo
 ms.date: 10/15/2021
 ms.topic: article
 ms.search.form:
 audience: Application User
 ms.reviewer: kamaybac
 ms.search.region: Global
-ms.author: crytt
+ms.author: benebotg
 ms.search.validFrom: 2021-10-15
 ms.dyn365.ops.version: 10.0.23
 ---
@@ -16,9 +16,8 @@ ms.dyn365.ops.version: 10.0.23
 # Priority-based planning
 
 [!include [banner](../../includes/banner.md)]
-[!INCLUDE [preview-banner](../../includes/preview-banner.md)]
 
-This topic describes the priority-based planning feature of Microsoft Dynamics 365 Supply Chain Management. The feature adds support for demand-driven planning, which is one step of Demand Driven Material Requirements Planning (DDMRP). Priority-based planning enables Planning Optimization to generate planned orders that are driven by planning priorities instead of requirement dates.
+This article describes the priority-based planning feature of Microsoft Dynamics 365 Supply Chain Management. The feature adds support for demand-driven planning, which is one step of [Demand Driven Material Requirements Planning (DDMRP)](ddmrp-overview.md). Priority-based planning enables Planning Optimization to generate planned orders that are driven by planning priorities instead of requirement dates.
 
 Priority-based planning lets you prioritize replenishment orders to ensure that urgent demand is prioritized over less important demand. For example, a stockout replenishment order will be prioritized over a standard refill replenishment order. The system can automatically split larger orders into separate smaller orders where order lines are grouped by priority. It can then process all high-priority orders first.
 
@@ -26,7 +25,7 @@ To get a quick overview of this feature, see the following video: [Planning opti
 
 ## Turn on priority-based planning in your system
 
-Before you can use this feature, it must be turned on in your system. Admins can use the [feature management](../../../fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview.md) settings to check the status of the feature and turn it on. In the **Feature management** workspace, the feature is listed in the following way:
+Before you can use this feature, it must be turned on for your system. Admins can use the [feature management](../../../fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview.md) settings to check the status of the feature and turn it on. In the **Feature management** workspace, the feature is listed in the following way:
 
 - **Module:** *Master planning*
 - **Feature name:** *Priority driven MRP support for Planning Optimization*

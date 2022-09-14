@@ -1,29 +1,19 @@
 ---
-# required metadata
-
 title: i.SAF reporting for Lithuania
-description: This topic explains how to set up and work with the i.SAF report for legal entities in Lithuania.
-author: LizaGolub
-ms.date: 11/10/2021
+description: This article explains how to set up and work with the i.SAF report for legal entities in Lithuania.
+author: AdamTrukawka
+ms.date: 03/22/2022
 ms.topic: article
 ms.prod: 
 ms.technology: 
-
-# optional metadata
-
-ms.search.form: TaxAuthority, TaxReportCollection, TaxReportVoucher, TaxTable
-# ROBOTS: 
 audience: Application User
-# ms.devlang: 
 ms.reviewer: kfend
-# ms.tgt_pltfrm: 
-ms.custom: 266884
 ms.search.region: Lithuania
-# ms.search.industry: 
-ms.author: kfend
+ms.author: atrukawk
 ms.search.validFrom: 2016-05-31
 ms.dyn365.ops.version: AX 7.0.1
-
+ms.custom: 266884
+ms.search.form: TaxAuthority, TaxReportCollection, TaxReportVoucher, TaxTable
 ---
 
 # i.SAF reporting for Lithuania
@@ -34,9 +24,9 @@ According to Order No VA-55, "On the Approval of Rules for the Processing and Su
 
 ## Overview
 
-This topic describes how to set up Electronic Reporting (ER) configurations for the i.SAF report and how to set up and use Electronic Messages (EM) functionality in Dynamics 365 Finance.
+This article describes how to set up Electronic Reporting (ER) configurations for the i.SAF report and how to set up and use Electronic Messages (EM) functionality in Dynamics 365 Finance.
 
-The topic includes information about:
+The article includes information about:
 
 - Import and set up ER configurations and application-specific parameters
 - Set up EM functionality
@@ -67,12 +57,15 @@ Table 1 “VAT table” of the **“Tables of the Technical Specification of the
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PVM1                  | Goods and services supplied within the territory of the country (Article 19(1) of the Law of the Republic of Lithuania on Value Added Tax (LVAT))                                                                                                                                                                                                                                 |
 | PVM2                  | Goods and services supplied within the territory of the country (Article 19(3) of the LVAT)                                                                                                                                                                                                                                                                                                     |
-| PVM3                  | Goods and services supplied within the territory of the country (Article 19(4), (5) of the LVAT)                                                                                                                                                                                                                                                                                                |
+| PVM3                  | Goods and services supplied within the territory of the country (Article 19(4) of the VAT Law)                                                                                                                                                                                                                                                                                                |
 | PVM4                  | When the buyer must withhold and pay VAT on goods and services supplied to them (Article 96 of the LVAT) expired 2016-03-31                                                                                                                                                                                                                                                                  |
 | PVM25                 | When the buyer must withhold and pay VAT on goods and services supplied to them (Article 96 of the LVAT) Rate 21%                                                                                                                                                                                                                                                                            |
 | PVM26                 | When the buyer must withhold and pay VAT on goods and services supplied to them (Article 96 of the LVAT) Rate 9%                                                                                                                                                                                                                                                                             |
 | PVM27                 | When the buyer must withhold and pay VAT on goods and services supplied to them (Article 96 of the LVAT) Rate 5%                                                                                                                                                                                                                                                                             |
 | PVM5                  | When the supply of goods and services is exempt from VAT (Articles 20–33 and 112 of the LVAT)                                                                                                                                                                                                                                                                                                       |
+| PVM51                | Transactions subject to the application of Article 19(5)(2) and (3) of the VAT Law (all cases, including, for example, Article 5 of the VAT Amount)                                                                                                                                                                                                                                                                                                       |
+| PVM52                | Cases where transactions are subject to a special taxation scheme (margin) (Sections II, III of the VAT Rate)                                                                                                                                                                                                                                                                                                      |
+| PVM53                | Cases where transactions are subject to a special taxation scheme (margin) (Sections II, III of the VAT Rate)                                                                                                                                                                                                                                                                                                      |
 | PVM6                  | When the supply of goods and services are for the private use of a VAT payer (Articles 5 and 6 of the LVAT) Rate 21%                                                                                                                                                                                                                                                                                       |
 | PVM7                  | When the supply of goods and services are for the private use of a VAT payer (Articles 5 and 6 of the LVAT) Rate 9%                                                                                                                                                                                                                                                                                        |
 | PVM8                  | When the supply of goods and services are for the private use of a VAT payer (Articles 5 and 6 of the LVAT) Rate 5%                                                                                                                                                                                                                                                                                        |
@@ -113,6 +106,9 @@ Table 1 “VAT table” of the **“Tables of the Technical Specification of the
 | PVM24                 | The Import VAT where the offsetting is controlled by the STI. Rate 21, 9, 5                                                                                                                                                                                                                                                                                                                         |
 | PVM48                 | Goods and services acquired outside Lithuania (including the cases of charging VAT of a foreign country and of the import of goods for domestic consumption) where the acquisition of goods and services is considered to have taken place outside the Republic of Lithuania and the output VAT is not chargeable because the acquisition is not subject to VAT in Lithuania.  |
 | PVM49                 | Where agricultural products and services are purchased from farmers who are subject to the compensatory VAT rate scheme Rate 6%                                                                                                                                                                                                                                                              |
+| PVM51                 | Transactions subject to the application of Article 19(5)(2) and (3) of the VAT Law (all cases, including for example, Article 5 of the VAT Amount).                                                                                                                                                                                                                                                                                                      |
+| PVM52                 | Cases where transactions are subject to a special taxation scheme (margin) (Sections II, III of the VAT Rate) Rate 9%.                                                                                                                                                                                                                                                                                                       |
+| PVM53                 | Cases where transactions are subject to a special taxation scheme (margin) (Sections II, III of the VAT Rate) Rate 5%.                                                                                                                                                                                                                                                                                                       |
 | PVM100                | Other cases                                                                                                                                                                                                                                                                                                                                                                                        |
 
 Starting from version **52.4** of the **i.SAF format (LT)** ER configuration, the format includes application-specific parameters where a user must define which **Sales tax codes** in the system correspond to which values from the enumerated list of VAT codes prescript as "Standard VAT codes".

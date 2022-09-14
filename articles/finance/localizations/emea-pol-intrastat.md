@@ -1,15 +1,13 @@
 ---
-# required metadata
-
 title: Polish Intrastat
-description: This topic contains information about Intrastat reporting in Poland.
-author: andosip
+description: This article contains information about Intrastat reporting in Poland.
+author: AdamTrukawka
 ms.date: 11/09/2021
 ms.topic: article
 audience: Application User
-ms.reviewer: kfender
+ms.reviewer: kfend
 ms.search.region: Global
-ms.author: v-aosipov
+ms.author: atrukawk
 ms.search.validFrom: 
 ---
 # Polish Intrastat
@@ -862,7 +860,7 @@ Import the latest version of the following ER configurations:
     </tr>
     <tr>
     <td colspan="3">
-    <p style="text-align: center;"><strong>Information about the document</strong></p>
+    <p align=center><strong>Information about the document</strong></p>
     </td>
     </tr>
     <tr>
@@ -1010,7 +1008,7 @@ Import the latest version of the following ER configurations:
     </tr>
     <tr>
     <td colspan="3">
-    <p style="text-align: center;"><strong>Information about the company</strong></p>
+    <p align=center><strong>Information about the company</strong></p>
     </td>
     </tr>
     <tr>
@@ -1081,7 +1079,7 @@ Import the latest version of the following ER configurations:
     </tr>
     <tr>
     <td colspan="3">
-    <p style="text-align: center;"><strong>Information about the good</strong></p>
+    <p align=center><strong>Information about the good</strong></p>
     </td>
     </tr>
     <tr>
@@ -1207,7 +1205,7 @@ Import the latest version of the following ER configurations:
     </tr>
     <tr>
     <td colspan="3">
-    <p style="text-align: center;"><strong>Contact information</strong></p>
+    <p align=center><strong>Contact information</strong></p>
     </td>
     </tr>
     <tr>
